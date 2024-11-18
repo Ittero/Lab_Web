@@ -43,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         default:
             $message = "Місяця з таким номером на Землі не існує.";
     }
-
-    echo $message; // Повертаємо відповідь
+    echo $message;
 }
 ?>
