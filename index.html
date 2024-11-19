@@ -26,10 +26,8 @@
       </footer>
       <script>
         document.getElementById('monthForm').addEventListener('submit', async function (event) {
-          event.preventDefault(); // Запобігаємо стандартному відправленню форми
-          
+          event.preventDefault();
           const month = document.getElementById('monthInput').value;
-    
           // Відправка даних на сервер
           const response = await fetch('admin.php', {
             method: 'POST',
@@ -38,10 +36,9 @@
             },
             body: `month=${encodeURIComponent(month)}`,
           });
-    
           // Обробка відповіді
           const message = await response.text();
-          alert(message); // Показуємо результат у спливаючому вікні
+          alert(message);
         });
       </script>
     </div>
