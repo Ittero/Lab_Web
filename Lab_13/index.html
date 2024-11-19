@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css">
+  <title>Web_Lab13</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <header class="header">
+        <h1>Визначення місяця за номерои - Lab13</h1>
+      </header>
+      <main class="main">
+        <form action="/admin.php" id="monthForm" method="post">
+          <span>Ваш номер місяця</span>
+          <input type="number" name="month" id="monthInput" class="input" placeholder="Номер місяця" required>
+          <button type="submit">Визначити</button>
+        </form>
+        <div id="result"></div>
+      </main>
+      <footer class="footer">
+        &Прав не має, але ви не беріть
+      </footer>
+      <script>
+        document.getElementById('monthForm').addEventListener('submit', async function (event) {
+          event.preventDefault();
+          const month = document.getElementById('monthInput').value;
+          // Відправка даних на сервер
+          const response = await fetch('admin.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `month=${encodeURIComponent(month)}`,
+          });
+          // Обробка відповіді
+          const message = await response.text();
+          alert(message);
+        });
+      </script>
+    </div>
+  </div>
+</body>
+
+</html>
