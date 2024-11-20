@@ -1,0 +1,81 @@
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Source Sans Pro";
+  min-width: 100%;
+  scroll-behavior: initial;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Робимо висоту контейнера на всю висоту вікна */
+  }
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Контейнер займає весь доступний простір */
+  }
+
+/*--------------HEADER------------*/
+.header{
+    height: 80px;
+    background: linear-gradient(to top left, rgb(72, 37, 93), rgb(48, 10, 10));
+    border-radius: 0 0 12px 12px;
+    color: aliceblue;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    padding-top: 20px;
+}
+/*--------------MAIN------------*/
+.main{
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    flex: 1;
+}
+.labs{
+    margin: 100px;
+}
+
+.lab{
+        text-align: center;
+    padding: 20px;
+    width: 200px;
+    height: 120px;
+    background: linear-gradient(to bottom right,rgb(184, 130, 103), rgb(145, 129, 188) ) ;
+    border-radius: 8px;
+    box-shadow: 2px 2px 12px grey;
+}
+.open-button{
+    display: flex;
+    text-decoration: none;
+    color: black;
+    align-items: none;
+    background-color: orange;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+
+/*--------------FOOTER------------*/
+.footer{
+    text-align: center;
+    border-radius: 12px 12px 0 0;
+    padding: 30px 20px;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(to bottom right,rgb(72, 37, 93), rgb(48, 10, 10));
+}
+
