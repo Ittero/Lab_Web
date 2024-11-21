@@ -43,13 +43,22 @@ body {
     width: 100%;
     padding: 20px;
     flex: 1;
+    justify-content: center;
 }
-.labs{
-    margin: 100px;
-}
+.labs {
+    width: 90%;
+    max-width: 100%;
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 40px;
+    justify-content: center;
+    padding: 20px;
+  }
 
 .lab{
-        text-align: center;
+    margin-right: 30px;
+    margin-bottom: 40px;
+    text-align: center;
     padding: 20px;
     width: 200px;
     height: 120px;
