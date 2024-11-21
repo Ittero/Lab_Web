@@ -76,6 +76,12 @@ body {
   height: 30px;
   border-color: black;
 }
+.button{
+  padding: 10px;
+  background: linear-gradient(to left bottom, white, grey);
+  border-radius: 6px;
+  cursor: pointer;
+}
 #monthInput {
   text-align: left;
 }

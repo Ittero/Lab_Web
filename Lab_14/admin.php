@@ -6,14 +6,14 @@ $c = [46, 41, 36, 31, 26, 21, 16, 11, 6, 1];
 $x = [4, 7, 10, 13, 16, 19, 22, 25, 28, 31];
 
 // Параметри для розмірів та кольорів
-$variant = 4; // Номер варіанту
+$variant = 8; // Номер варіанту
 $height = $variant * 3;
 $width = $variant * 5;
 $bgColor = $variant * 10;
 $borderColor = $variant * 15;
 
 echo "<h2>Формула:</h2>";
-echo "<img src='../images/formula.png' alt='Формула'>";
+echo "<img src='../images/Formula.png' alt='Формула'>";
 
 echo "<h2>Результати табуляції:</h2>";
 
@@ -29,19 +29,28 @@ for ($i = 0; $i < count($a); $i++) {
     $bgColorHex = "#" . str_pad($currentBgColor, 6, "0", STR_PAD_LEFT);
     $borderColorHex = "#" . str_pad($currentBorderColor, 6, "0", STR_PAD_LEFT);
 
-    // Виведення результату в div
-    echo "<div style='
+  // Виведення результату в div
+echo "<div style='
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        margin: 10px auto;
+    '>
+    <div style='
         background-color: $bgColorHex;
         border: 2px solid $borderColorHex;
         width: {$width}px;
         height: {$height}px;
-        margin: 10px auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;'>
+        margin-right: 10px;
+    '></div>
+    <div style='
+        color: black;
+        font-size: 16px;
+    '>
         y = " . round($y, 2) . "
-    </div>";
+    </div>
+</div>";
+
 
     // Збільшення розмірів блоку
     $height += 5;
