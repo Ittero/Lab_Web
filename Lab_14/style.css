@@ -19,12 +19,12 @@ body {
 .wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Робимо висоту контейнера на всю висоту вікна */
+    min-height: 100vh;
 }
 .container {
   display: flex;
   flex-direction: column;
-  flex: 1; /* Контейнер займає весь доступний простір */
+  flex: 1; 
 }
 
 /*--------------HEADER------------*/
@@ -35,7 +35,6 @@ body {
     background: linear-gradient(to top left, rgb(41, 3, 64), rgb(79, 7, 7));
     border-radius: 0 0 12px 12px;
     color: aliceblue;
-    /* justify-content: space-between; */
     text-align: center;
     padding: 20px;
   }
@@ -72,7 +71,7 @@ body {
     text-align: center;
     width: 100%;
     padding: 20px;
-    flex: 1; /* Займає доступний простір, щоб футер залишався внизу */
+    flex: 1; 
   }
 .button{
   padding: 10px;

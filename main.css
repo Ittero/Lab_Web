@@ -53,6 +53,7 @@ body {
     gap: 40px;
     justify-content: center;
     padding: 20px;
+    
   }
 
 .lab{
@@ -61,7 +62,7 @@ body {
     text-align: center;
     padding: 20px;
     width: 200px;
-    height: 120px;
+    height: 140px;
     background: linear-gradient(to bottom right,rgb(184, 130, 103), rgb(145, 129, 188) ) ;
     border-radius: 8px;
     box-shadow: 2px 2px 12px grey;
@@ -74,10 +75,12 @@ body {
     background-color: orange;
     border-radius: 6px;
     padding: 10px;
-    margin-top: 15px;
+    margin-top: 10px;
     justify-content: center;
 }
-
+.description{
+  margin-top: 5px;
+}
 
 /*--------------FOOTER------------*/
 .footer{
