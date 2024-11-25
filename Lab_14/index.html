@@ -27,26 +27,9 @@
       <footer class="footer">
         &Прав не має, але ви не беріть
       </footer>
-      <script>
-        function fetchPHP() {
-          fetch('./admin.php') 
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Помилка з сервером');
-              }
-              return response.text();
-            })
-            .then(data => {
-              document.getElementById('output').innerHTML = data;
-            })
-            .catch(error => {
-              console.error('Сталася помилка:', error);
-            });
-        }
-      </script>
+      <script src="../script.js"></script>
     </div>
   </div>
-  
 </body>
 
 </html>
