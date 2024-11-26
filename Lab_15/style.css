@@ -73,6 +73,27 @@ body {
     padding: 20px;
     flex: 1; 
   }
+  .button{
+    padding: 10px;
+    background: linear-gradient(to left bottom, white, grey);
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .output{
+    margin-top: 40px; 
+    color: black;
+    width: 600px;
+    min-height: 60px;
+    background: linear-gradient(to left bottom, rgb(209, 168, 176), rgb(148, 148, 189));
+    box-shadow: 1px 1px 10px grey;
+    border-radius: 12px;
+    padding: 10px;
+}
+#output {
+    margin: 0 auto;
+    margin-top: 20px;      
+    text-align: center;   
+  }
 
     /*--------------FOOTER------------*/
 

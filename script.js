@@ -34,4 +34,13 @@ function fetchPHP() {
   }
 
 //   Lb 15
-
+function fetchPHP() {
+  fetch('./admin.php')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('output').innerHTML = data;
+    })
+    .catch(error => {
+      document.getElementById('output').innerHTML = '<span style="color: red;">Помилка: ' + error + '</span>';
+    });
+}
