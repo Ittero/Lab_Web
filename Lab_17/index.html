@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css">
+    <title>Web_Lab 17</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <header class="header">
+                <div class="header-content">
+                    <a href="../index.html" class="exit-button">
+                        <img src="../images/exit.svg" alt="Повернутись назад" class="image">
+                        <h3 style="color: rgb(0, 0, 0);">Головна</h3>
+                    </a>
+                    <h1 class="title">Форма - Lab 17</h1>
+                </div>
+            </header>
+            <main class="main">
+                <form class="form" onsubmit="event.preventDefault(); submitForm();">
+                    <div class="line">
+                        <label for="username">Ім'я користувача:</label>
+                        <input type="text" id="username" name="username" class="input" required>
+                    </div>
+                    <div class="line">
+                        <label for="password">Пароль:</label>
+                        <input type="password" id="password" name="password" class="input" required>
+                    </div>
+                    <div class="line">
+                        <label for="ip_address">IP-адреса:</label>
+                        <input type="text" id="ip_address" name="ip_address" placeholder="Наприклад, 192.168.0.1" class="input" required>                    </div>
+                    <div class="line">
+                        <label for="profile_picture">Фотографія:</label>
+                        <input type="file" id="profile_picture" name="profile_picture">
+                    </div>
+                    <div class="line">
+                        <label for="agree">Згоден з умовами:</label>
+                        <input type="checkbox" id="agree" name="agree">
+                    </div>
+                    <div class="line">
+                        <label for="newsletter">Підписка на новини:</label>
+                        <input type="radio" id="yes" name="newsletter" value="yes"> Так
+                        <input type="radio" id="no" name="newsletter" value="no"> Ні
+                    </div>
+                    <div class="line">
+                        <input type="hidden" name="form_type" value="registration">
+                    </div>
+                    <div class="line">
+                        <button type="button" onclick="alert('Це кнопка!')" class="button">Просто кнопка</button>
+                        <input type="reset" value="Скинути" class="button">
+                        <button type="button" class="button" onclick="checkIP()">Відправити</button>
+                    </div>
+                </form>
+                <div id="output" class="output">
+                    <span style="color: gray">Відаовідь буде тут...</span>
+                </div>
+            </main>
+            <footer class="footer">
+                &Прав не має, але ви не беріть
+            </footer>
+            <script>
+                function checkIP() {
+                    const ipInput = document.getElementById("ip_address").value; // Отримуємо значення з поля
+                    const output = document.getElementById("output"); // Вивід результату
+                    const formData = new FormData();
+                    formData.append("ip_address", ipInput);
+
+                    fetch("admin.php", {
+                        method: "POST",
+                        body: formData,
+                    })
+                        .then((response) => response.text()) // Отримуємо відповідь як текст
+                        .then((data) => {
+                            output.innerHTML = data; // Вставляємо відповідь у div
+                        })
+                        .catch((error) => {
+                            output.innerHTML =
+                                '<span style="color: red;">Помилка під час обробки: ' +
+                                error.message +
+                                "</span>";
+                        });
+                }
+
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

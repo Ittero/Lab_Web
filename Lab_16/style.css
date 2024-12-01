@@ -65,22 +65,23 @@ body {
     font-size: 1.5em;
     margin-right: 100px;
   }
+  
 
   /*--------------MAIN------------*/
 
-.main {
+  .main {
     text-align: center;
     width: 100%;
     padding: 20px;
     flex: 1; 
   }
-.button{
-  padding: 10px;
-  background: linear-gradient(to left bottom, white, grey);
-  border-radius: 6px;
-  cursor: pointer;
-}
-.output{
+  .button{
+    padding: 10px;
+    background: linear-gradient(to left bottom, white, grey);
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .output{
     margin-top: 40px; 
     color: black;
     width: 600px;
@@ -95,8 +96,8 @@ body {
     margin-top: 20px;      
     text-align: center;   
   }
-  
-  /*--------------FOOTER------------*/
+
+    /*--------------FOOTER------------*/
 
 .footer {
     text-align: center;

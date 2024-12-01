@@ -1,6 +1,6 @@
 <?php
 // Масив B
-$arrayB = array(5, 4, 7, -3, -2, -5, 0, 9, -5);
+$arrayB = array(5, 4, 7, 6, -3, -2, -5, 0, 9, -5);
 
 // Обчислення суми квадратів від'ємних елементів
 $sumNegativeSquares = 0;
@@ -23,19 +23,22 @@ $newArray = array_map(function ($value) use ($factor) {
 }, $arrayB);
 
 // Обчислення добутку, координат і кількості елементів більше за 25
-$product = 1;
+$product = 0;
 $countGreaterThan25 = 0;
 $coordinates = [];
 
 foreach ($newArray as $index => $value) {
     if ($value > 25) {
-        $product *= $value;
+        $product += $value;
         $countGreaterThan25++;
-        $coordinates[] = $index;
+        $coordinates[] = $index+1;
     }
 }
 
 // Виведення результатів у вигляді таблиці
+echo "<h2>Масив:</h2>";
+echo "<img src='../images/Masyv.png' alt='Масив'>";
+
 echo "<table border='1' style='border-collapse: collapse; width: 100%; text-align: left;'>
         <thead>
             <tr>
@@ -49,11 +52,11 @@ echo "<table border='1' style='border-collapse: collapse; width: 100%; text-alig
                 <td>$sumNegativeSquares</td>
             </tr>
             <tr>
-                <td>Кількість від'ємних</td>
+                <td>Кількість від'ємних елементів</td>
                 <td>$negativeCount</td>
             </tr>
             <tr>
-                <td>Кількість додатних</td>
+                <td>Кількість додатних елементів</td>
                 <td>$positiveCount</td>
             </tr>
             <tr>

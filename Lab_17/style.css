@@ -51,7 +51,7 @@ body {
     border-radius: 8px;
     padding: 5px;
     padding-right:12px ;
-     margin-right: auto;
+    margin-right: auto;
   }
   .image {
     width: 50px;
@@ -65,20 +65,41 @@ body {
     font-size: 1.5em;
     margin-right: 100px;
   }
+  
 
   /*--------------MAIN------------*/
 
-.main {
+  .main {
     text-align: center;
     width: 100%;
     padding: 20px;
     flex: 1; 
   }
-.button{
-  padding: 10px;
-  background: linear-gradient(to left bottom, white, grey);
-  border-radius: 6px;
-  cursor: pointer;
+  .button{
+    padding: 10px;
+    background: linear-gradient(to left bottom, white, grey);
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  .line{
+    margin-bottom: 10px;
+}
+.form{
+    color: black;
+    width: 600px;
+    min-height: 60px;
+    background: linear-gradient(to left bottom, rgb(209, 168, 176), rgb(148, 148, 189));
+    box-shadow: 1px 1px 10px grey;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-top: 20px;      
+    text-align: center;  
+}
+.input{
+    height: 20px;
+    border-radius: 4px;
 }
 .output{
     margin-top: 40px; 
@@ -95,8 +116,11 @@ body {
     margin-top: 20px;      
     text-align: center;   
   }
-  
-  /*--------------FOOTER------------*/
+  ::placeholder{
+    font-size: 12px;
+}
+
+    /*--------------FOOTER------------*/
 
 .footer {
     text-align: center;
