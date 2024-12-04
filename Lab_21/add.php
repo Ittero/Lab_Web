@@ -33,7 +33,7 @@ try {
         $stmt = $pdo->prepare("INSERT INTO users (name, email, age) VALUES (:name, :email, :age)");
         $stmt->execute(['name' => $name, 'email' => $email, 'age' => $age]);
 
-        echo json_encode(['success' => true, 'message' => 'Запис додано успішно!']);
+        echo json_encode(['success' => true, 'message' => 'Користувача успішно додано!']);
     } else {
         echo json_encode(['success' => false, 'message' => 'Неправильні дані']);
     }

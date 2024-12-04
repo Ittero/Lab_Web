@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 }
 
 // Отримання даних
-$sql = "SELECT name, age FROM users";
+$sql = "SELECT id, name, age FROM users";
 $result = $conn->query($sql);
 
 $users = [];

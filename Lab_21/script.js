@@ -1,39 +1,59 @@
 function addRecord() {
-    // Отримуємо значення з полів вводу
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const age = document.getElementById("age").value.trim();
-  
-    // Перевірка, щоб всі поля були заповнені
-    if (!name || !email || !age) {
-      document.getElementById("output").innerHTML =
-        '<span style="color: red;">Заповніть всі поля!</span>';
-      return;
-    }
-  
-    // Створюємо запит на сервер
-    fetch("add.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, age }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          document.getElementById("output").innerHTML =
-            '<span style="color: green;">' + data.message + "</span>";
-        } else {
-          document.getElementById("output").innerHTML =
-            '<span style="color: red;">' + data.message + "</span>";
-        }
-      })
-      .catch((error) => {
-        document.getElementById("output").innerHTML =
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const age = document.getElementById("age").value.trim();
+
+  if (!name || !email || !age) {
+    const output = document.getElementById("output");
+    output.innerHTML = '<span style="color: red;">Заповніть всі поля!</span>';
+    output.style.display = "block";
+
+    // Таймер для приховування повідомлення
+    setTimeout(() => {
+        output.style.display = "none";
+    }, 5000);
+    return;
+}
+
+fetch("add.php", {
+  method: "POST",
+  headers: {
+      "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ name, email, age }),
+})
+  .then((response) => response.json())
+  .then((data) => {
+      const output = document.getElementById("output");
+      if (data.success) {
+          output.innerHTML =
+              '<span style="color: green;">Користувача успішно додано!</span>';
+      } else {
+          output.innerHTML =
+              '<span style="color: red;">' + data.message + "</span>";
+      }
+      output.style.display = "block";
+
+      setTimeout(() => {
+          output.style.display = "none";
+      }, 3000);
+
+      if (data.success) {
+          fetchUsers(); 
+      }
+  })
+  .catch((error) => {
+      const output = document.getElementById("output");
+      output.innerHTML =
           '<span style="color: red;">Помилка сервера: ' + error + "</span>";
-      });
-  }
+      output.style.display = "block";
+
+      // Таймер для приховування повідомлення
+      setTimeout(() => {
+          output.style.display = "none";
+      }, 5000); // Зникає через 3 секунди
+  });
+}
   
   function fetchUsers() {
     fetch('./view.php')
@@ -124,26 +144,19 @@ function addRecord() {
               </tr>
             </thead>
             <tbody id="users-body">
-              ${data
-                .map(
-                  user => `
-                <tr>
-                  <td>${user.name}</td>
-                  <td>${user.age}</td>
-                  <td>
-                  <tr>
-                  <td>1</td>
-                  <td>Ім'я Користувача</td>
-                  <td>
-                    <button onclick="console.log('ID:', ${user.id}); deleteUser(${user.id})" class="button">Видалити</button>
-                  </td>
-                </tr>
-                
-                  </td>
-                </tr>`
-                )
-                .join('')}
-            </tbody>
+            ${data
+              .map(
+                user => `
+              <tr>
+                <td>${user.name}</td>
+                <td>${user.age}</td>
+                <td>
+                  <button onclick="deleteUser(${user.id})" class="button">Видалити</button>
+                </td>
+              </tr>`
+              )
+              .join('')}
+          </tbody>          
           </table>`;
         usersTable.innerHTML = table;
       })
@@ -158,37 +171,34 @@ function addRecord() {
   }
   
   function deleteUser(userId) {
-    console.log('ID передано в deleteUser:', userId); // Перевірка ID
-  
+    // Перевірка, чи переданий ID
     if (!userId) {
-      console.error('ID користувача не передано!');
-      return;
+        alert("Помилка: ID користувача не переданий.");
+        return;
     }
-  
-    if (!confirm('Ви дійсно хочете видалити цього користувача?')) return;
-  
-    console.log('ID користувача:', userId); // Перевірте, чи ID передається
-  
-    fetch('./delete.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: `id=${encodeURIComponent(userId)}`,
+
+    // Підтвердження видалення
+    if (!confirm("Ви дійсно хочете видалити цього користувача?")) return;
+
+    // Відправка запиту на сервер
+    fetch("./delete.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `id=${encodeURIComponent(userId)}`,
     })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          alert('Користувача успішно видалено!');
-          fetchUsers(); // Оновлення списку користувачів
-        } else {
-          alert(`Помилка: ${data.error}`);
-        }
-      })
-      .catch(error => {
-        alert(`Помилка: ${error.message}`);
-        console.error('Деталі помилки:', error);
-      });
-  }
-  
-  
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.success) {
+                alert(data.message || "Користувача успішно видалено!");
+                fetchUsers(); // Оновлення списку користувачів
+            } else {
+                alert(`Помилка: ${data.error || "Не вдалося видалити користувача."}`);
+            }
+        })
+        .catch((error) => {
+            alert(`Помилка: ${error.message}`);
+            console.error("Деталі помилки:", error);
+        });
+}
